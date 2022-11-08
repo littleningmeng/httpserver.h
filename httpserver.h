@@ -1047,8 +1047,8 @@ void hs_free_buffer(http_request_t* session) {
 
 void hs_init_session(http_request_t* session) {
   session->flags = HTTP_AUTOMATIC;
-  session->parser = (http_parser_t){ };
-  session->stream = (hs_stream_t){ };
+  session->parser = http_parser_t{ };
+  session->stream = hs_stream_t{ };
   if (session->tokens.buf) {
     free(session->tokens.buf);
     session->tokens.buf = NULL;
@@ -1340,7 +1340,7 @@ http_string_t http_request_header(http_request_t* request, char const * key) {
       }
     }
   }
-  return (http_string_t) { };
+  return http_string_t { };
 }
 
 void http_request_free_buffer(http_request_t* request) {
